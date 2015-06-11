@@ -1,0 +1,2 @@
+<can-import from="sam/namer/" />
+<sam-namer></sam-namer>

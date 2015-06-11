@@ -1,0 +1,17 @@
+{
+  "name": "sam-frontend",
+  "version": "0.0.1",
+  "description": "An intelligent dashboard that listens to you and learns",
+  "main": "sam/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Luecke",
+  "license": "MIT",
+  "dependencies": {
+    "animate.css": "^3.2.5",
+    "can": "^2.3.0-pre.1",
+    "jquery": "^2.1.4",
+    "steal": "^0.10.5"
+  }
+}

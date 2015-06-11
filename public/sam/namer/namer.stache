@@ -1,0 +1,4 @@
+<h1 {{type}}>What is my name?</h1>
+<form can-submit="{save}">
+  <input type="text" can-value="name" class="animated hidden">
+</form>

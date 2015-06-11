@@ -1,0 +1,38 @@
+@import '../node_modules/animate.css/animate.css';
+
+body, html {
+    font-family: 'Muli', sans-serif;
+    text-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+    height: 100%;
+    min-height: 100%;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+textarea:focus, input:focus{
+    outline: 0;
+}
+
+input {
+    border: none;
+    font-size: 2em;
+    border-bottom: 2px solid grey;
+    text-align: center;
+}
+
+#main {
+    position: absolute;
+    display: block;
+    text-align: center;
+    top: 40%;
+    left: 50%;
+    width: 100%;
+    -webkit-transform: translate(-50%,-40%);
+    -webkit-transform-origin: 50% 40%;
+}
+
+.hidden {
+    display: none;
+}

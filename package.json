@@ -1,0 +1,23 @@
+{
+  "name": "sam",
+  "version": "0.0.1",
+  "description": "An \"intelligent\" dashboard that listens to you and learns",
+  "main": "index.html",
+  "scripts": {
+    "start": "node lib/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^5.4.7",
+    "feathers": "^1.1.0-pre.0",
+    "lodash": "^3.9.2",
+    "natural-brain": "^0.1.0",
+    "nedb": "^1.1.2",
+    "when": "^3.7.3"
+  },
+  "system": {
+    "transpiler": "babel"
+  }
+}
