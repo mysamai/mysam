@@ -11,7 +11,17 @@
   "dependencies": {
     "animate.css": "^3.2.5",
     "can": "^2.3.0-pre.1",
+    "canjs-feathers": "0.1.0",
+    "feathers-client": "^0.1.0",
     "jquery": "^2.1.4",
-    "steal": "^0.10.5"
+    "socket.io-client": "^1.3.5",
+    "steal": "^0.10.5",
+    "steal-builtins": "^1.0.0"
+  },
+  "system": {
+    "paths": {
+      "socketio": "node_modules/socket.io-client/socket.io.js",
+      "feathers": "node_modules/feathers-client/dist/feathers.js"
+    }
   }
 }

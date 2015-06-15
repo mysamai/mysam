@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import stache from 'can/view/stache/';
 
-$.fn.type = function(txt, speed = 100) {
+$.fn.type = function(txt, speed = 50) {
   txt = txt || this.text();
 
   let txtLen = txt.length;

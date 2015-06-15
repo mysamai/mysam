@@ -1,2 +1,9 @@
-<can-import from="sam/namer/" />
-<sam-namer></sam-namer>
+<div id="main">
+  {{listening}} <i class="fa fa-microphone animated pulse infinite"></i>
+  {{recognition.transcript}}
+  {{^if configuration.name}}
+    <can-import from="sam/namer/" />
+    <sam-namer></sam-namer>
+  {{/else}}
+  {{/if}}
+</div>

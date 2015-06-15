@@ -26,11 +26,8 @@ input {
     position: absolute;
     display: block;
     text-align: center;
-    top: 40%;
-    left: 50%;
+    top: 20%;
     width: 100%;
-    -webkit-transform: translate(-50%,-40%);
-    -webkit-transform-origin: 50% 40%;
 }
 
 .hidden {
