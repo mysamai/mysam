@@ -13,16 +13,20 @@ $.fn.type = function(txt, speed = 50) {
     var humanize = Math.round(Math.random() * (speed - 20)) + 30;
     var timeOut = setTimeout(() => {
       this.text(txt.substring(0, ++char));
-      type();
 
       if (char === txtLen) {
         clearTimeout(timeOut);
         this.trigger('type-end')
+      } else {
+        type();
       }
+
     }, humanize);
   };
 
   type();
+
+  return this;
 };
 
 stache.registerHelper('type', function() {

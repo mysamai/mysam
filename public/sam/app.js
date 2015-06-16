@@ -1,59 +1,35 @@
-import $ from './plugins';
+import $ from './utils';
 import can from 'can';
+
 import index from './index.stache!';
-import Map from 'can/map/';
-import 'can/map/define/';
-import Recognizer from './recognition/recognizer';
-import Learning from './models/learning';
-
-new Learning({
-  test: 'me'
-}).save().then(learning => {
-  console.log(learning);
-});
-
-const recognition = new Recognizer();
-const AppState = Map.extend({
-  define: {
-    recognition: {
-      value: recognition
-    },
-
-    name: {
-      value: 'sam'
-    },
-
-    timeout: {
-      value: 5000
-    },
-
-    listening: {
-      get(old, set) {
-        let transcript = this.attr('recognition.transcript');
-        let name = this.attr('name');
-        let id = this.timeoutId;
-
-        if(id) {
-          clearTimeout(id);
-        }
-
-        id = setTimeout(() => {
-          set(false);
-          this.timeoutId = null;
-        }, this.attr('timeout'));
-
-        this.timeoutId = id;
-
-        return transcript.toLowerCase().indexOf(name) !== -1;
-      }
-    }
-  }
-});
-
+import actions from './actions';
+import Classify from './models/classify';
+import AppState from './state';
 
 $(() => {
   let state = new AppState();
 
-  $('body').append(index(state));
-  recognition.start();
+  state.bind('recognition.transcript', function (ev, value) {
+    new Classify({
+      input: value
+    }).save().then(function (result) {
+        let action = actions[result.action.action];
+
+        if(!state.pastThreshold(result.classifications)) {
+          action = actions.error;
+        }
+
+        if (action) {
+          action($('#main'), result);
+        }
+      }, function () {
+        console.log(arguments);
+      });
+  });
+
+  $('body').append(index(state)).on('submit', 'form', function (ev) {
+    ev.preventDefault();
+  });
+
+  state.attr('recognition').start();
 });

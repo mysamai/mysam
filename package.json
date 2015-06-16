@@ -5,19 +5,27 @@
   "main": "index.html",
   "scripts": {
     "start": "node lib/",
+    "watch": "supervisor --ignore public/ --no-restart-on error lib/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "babel": "^5.4.7",
+    "body-parser": "^1.13.0",
     "feathers": "^1.1.0-pre.0",
-    "lodash": "^3.9.2",
+    "itunescontrol": "^1.0.5",
+    "lodash": "^3.9.3",
     "natural-brain": "^0.1.0",
     "nedb": "^1.1.2",
-    "when": "^3.7.3"
+    "playback": "^0.2.0",
+    "pos": "^0.1.9",
+    "q": "^1.4.1"
   },
   "system": {
     "transpiler": "babel"
+  },
+  "devDependencies": {
+    "supervisor": "^0.6.0"
   }
 }
