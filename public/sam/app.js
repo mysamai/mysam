@@ -1,5 +1,6 @@
 import $ from './utils';
 import can from 'can';
+import 'simpleweather';
 
 import index from './index.stache!';
 import actions from './actions';
@@ -10,21 +11,23 @@ $(() => {
   let state = new AppState();
 
   state.bind('recognition.transcript', function (ev, value) {
-    new Classify({
-      input: value
-    }).save().then(function (result) {
-        let action = actions[result.action.action];
+    if(state.attr('listening')) {
+      new Classify({
+        input: value
+      }).save().then(function (result) {
+          let action = actions[result.action.action];
 
-        if(!state.pastThreshold(result.classifications)) {
-          action = actions.error;
-        }
+          if(!state.pastThreshold(result.classifications)) {
+            action = actions.error;
+          }
 
-        if (action) {
-          action($('#main'), result);
-        }
-      }, function () {
-        console.log(arguments);
-      });
+          if (action) {
+            action($('#main'), result, state);
+          }
+        }, function () {
+          console.log(arguments);
+        });
+    }
   });
 
   $('body').append(index(state)).on('submit', 'form', function (ev) {

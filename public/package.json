@@ -21,7 +21,8 @@
   "system": {
     "paths": {
       "socketio": "node_modules/socket.io-client/socket.io.js",
-      "feathers": "node_modules/feathers-client/dist/feathers.js"
+      "feathers": "node_modules/feathers-client/dist/feathers.js",
+      "simpleweather": "node_modules/simpleweather/jquery.simpleWeather.js"
     }
   }
 }

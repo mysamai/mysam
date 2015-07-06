@@ -19,27 +19,40 @@ export default Map.extend({
     },
 
     timeout: {
-      value: 5000
+      value: 30000
     },
 
     listening: {
+      set(value) {
+        if(value) {
+          this.timeoutId = setTimeout(() => {
+            this.timeoutId = null;
+          }, this.attr('timeout'));
+        } else {
+          this.timeoutId = null;
+        }
+      },
+
       get(old, set) {
         let transcript = this.attr('recognition.transcript');
         let name = this.attr('name');
         let id = this.timeoutId;
+        let isListening = !!id ;
+        let startListening = transcript.toLowerCase().indexOf(name) !== -1;
 
         if (id) {
           clearTimeout(id);
+          this.timeoutId = null;
         }
 
-        id = setTimeout(() => {
-          set(false);
-          this.timeoutId = null;
-        }, this.attr('timeout'));
+        if(startListening || isListening) {
+          this.timeoutId = setTimeout(() => {
+            set(false);
+            this.timeoutId = null;
+          }, this.attr('timeout'));
+        }
 
-        this.timeoutId = id;
-
-        return transcript.toLowerCase().indexOf(name) !== -1;
+        return isListening || startListening;
       }
     }
   },

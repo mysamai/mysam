@@ -1,3 +1,6 @@
+<can-import from="sam/indicator" />
+<sam-indicator listening="{listening}"></sam-indicator>
+
 <div id="main">
   <i class="fa fa-comments placeholder animated pulse infinite"></i>
 </div>

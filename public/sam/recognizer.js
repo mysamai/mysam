@@ -8,6 +8,10 @@ export default Map.extend({
   define: {
     transcript: {
       value: ''
+    },
+
+    restart: {
+      value: true
     }
   },
 
@@ -28,11 +32,19 @@ export default Map.extend({
   },
 
   start() {
+    this.attr('restart', true);
     this.recognition.start();
-    this.recognition.onend = this.end.bind(this);
+    this.recognition.onend = this.onEnd.bind(this);
   },
 
-  end() {
-    this.recognition.start();
+  stop() {
+    this.attr('restart', false);
+    this.recognition.stop();
+  },
+
+  onEnd() {
+    if(this.attr('restart')) {
+      this.recognition.start();
+    }
   }
 });

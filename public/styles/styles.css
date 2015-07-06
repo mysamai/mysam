@@ -64,3 +64,9 @@ textarea {
 .hidden {
     display: none;
 }
+
+sam-indicator {
+    font-size: 1.5em;
+    float: right;
+    padding: 20px;
+}

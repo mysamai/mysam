@@ -1,7 +1,7 @@
 {
   "name": "sam",
   "version": "0.0.1",
-  "description": "An \"intelligent\" dashboard that listens to you and learns",
+  "description": "An \"intelligent\" agent that listens to you and learns",
   "main": "index.html",
   "scripts": {
     "start": "node lib/",
