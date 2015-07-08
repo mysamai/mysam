@@ -19,6 +19,8 @@ $(() => {
 
           if(!state.pastThreshold(result.classifications)) {
             action = actions.error;
+          } else {
+            state.attr('error', false);
           }
 
           if (action) {

@@ -1,6 +1,11 @@
 <can-import from="sam/indicator" />
 <sam-indicator listening="{listening}"></sam-indicator>
 
+<p class="transcript">
+  {{recognition.transcript}}
+  {{#if error}}<i class="fa fa-question"></i>{{/if}}
+</p>
+
 <div id="main">
-  <i class="fa fa-comments placeholder animated pulse infinite"></i>
+  <i class="icon-federated placeholder animated pulse infinite"></i>
 </div>

@@ -20,7 +20,14 @@ h2 {
 }
 
 .placeholder {
-    font-size: 7em;
+    font-size: 10em;
+}
+
+.transcript {
+    color: #dddddd;
+    padding-left: 20px;
+    float: left;
+    text-shadow: none;
 }
 
 button.fa {

@@ -64,8 +64,9 @@ const actions = {
     }
   },
 
-  error(el) {
-    el.html('<i class="fa fa-question placeholder animated shake"></i>');
+  error(el, result, state) {
+    state.attr('error', true);
+    // el.html('<i class="fa fa-question placeholder animated shake"></i>');
   },
 
   reply(el, result) {
