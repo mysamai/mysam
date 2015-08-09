@@ -14,6 +14,7 @@
     "babel": "^5.4.7",
     "body-parser": "^1.13.0",
     "feathers": "^1.1.0-pre.0",
+    "feathers-nedb": "^0.1.0",
     "itunescontrol": "^1.0.5",
     "lodash": "^3.9.3",
     "natural-brain": "^0.1.0",

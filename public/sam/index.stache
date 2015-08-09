@@ -1,9 +1,8 @@
 <can-import from="sam/indicator" />
-<sam-indicator listening="{listening}"></sam-indicator>
+<sam-indicator listening="{listening}" error="{error}"></sam-indicator>
 
 <p class="transcript">
   {{recognition.transcript}}
-  {{#if error}}<i class="fa fa-question"></i>{{/if}}
 </p>
 
 <div id="main">
