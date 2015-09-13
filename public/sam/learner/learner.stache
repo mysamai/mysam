@@ -1,8 +1,0 @@
-<h1 {{type}}>Learn something new</h1>
-<h2>{{#if transcript}} {{transcript}} {{else}} &nbsp; {{/if}}</h2>
-<form can-submit="{save}">
-  <textarea can-value="{action}">
-    { "plugin": "" }
-  </textarea>
-  <button class="fa fa-check"></button>
-</form>
