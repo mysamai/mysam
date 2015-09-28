@@ -62,14 +62,18 @@ describe('BrainJS classifier', () => {
 
   it('classifies actions', done => {
     classify.create({
-      text: 'Hey, you hear me?'
+      input: 'hey you hear me'
     }, {}, (error, data) => {
       assert.equal(data._id, 0);
       assert.deepEqual(data.action, fixture[0].action);
       assert.equal(data.classifications.length, 3);
+      assert.deepEqual(data.pos, {
+        tokens: [ 'hey', 'you', 'hear', 'me' ],
+        tags: [ 'UH', 'PRP', 'VB', 'PRP' ]
+      });
 
       classify.create({
-        text: 'What\'s the meaning of my life?'
+        input: 'What\'s the meaning of my life?'
       }, {}, (error, data) => {
         assert.equal(data._id, 2);
         assert.deepEqual(data.action, fixture[2].action);
@@ -80,7 +84,7 @@ describe('BrainJS classifier', () => {
 
   it('extracts tags', done => {
     classify.create({
-      text: 'Can you please say hi to Gabe'
+      input: 'Can you please say hi to Gabe'
     }, {}, (error, data) => {
       assert.equal(data._id, 1);
       assert.deepEqual(data.extracted, { subject: ['Gabe'] });
@@ -99,7 +103,7 @@ describe('BrainJS classifier', () => {
 
     actions.create(newAction, (error, action) => {
       classify.create({
-        text: 'Can you play music for us?'
+        input: 'Can you play music for us?'
       }, {}, (error, data) => {
         assert.equal(data._id, action._id);
         assert.equal(data.text, action.text);
