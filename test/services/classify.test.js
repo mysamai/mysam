@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import assert from 'assert';
-import app from '../../lib/app';
+import app from '../../src/app';
 
 const classify = app.service('classify');
 

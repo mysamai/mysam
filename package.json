@@ -1,22 +1,32 @@
 {
   "name": "mysam",
   "version": "0.0.1",
-  "description": "An open, web based \"intelligent\" agent that can listen to you and learn.",
-  "main": "lib/index",
+  "description": "An open, web based \"intelligent\" assistant that can listen to you and learn.",
+  "main": "lib/electron",
+  "bin": {
+    "testee": "./bin/testee"
+  },
   "scripts": {
-    "start": "node lib/",
+    "start": "node lib/server",
+    "electron": "electron .",
+    "compile": "babel src --out-dir lib",
+    "compile:watch": "babel src --out-dir lib --watch",
     "test": "npm run jshint && npm run mocha",
-    "watch": "DEBUG=mysam:* supervisor --ignore node_modules/ --no-restart-on error lib/",
-    "jshint": "jshint lib/. test/. --config",
+    "jshint": "jshint src/. test/. --config",
     "mocha:watch": "mocha --compilers js:babel/register test/ --watch --recursive --growl --reporter Min",
     "mocha": "mocha --compilers js:babel/register test/ --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:daffl/mysam.git"
   },
   "author": "David Luecke <daff@neyeon.com>",
   "license": "MIT",
   "dependencies": {
-    "babel": "^5.4.7",
     "body-parser": "^1.13.0",
+    "commander": "^2.8.1",
     "debug": "^2.2.0",
+    "electron-prebuilt": "^0.33.3",
     "feathers": "^1.1.0-pre.0",
     "feathers-hooks": "^0.5.0",
     "feathers-memory": "^0.3.4",
@@ -28,6 +38,7 @@
     "q": "^1.4.1"
   },
   "devDependencies": {
+    "babel": "^5.8.23",
     "jshint": "^2.8.0",
     "mocha": "^2.3.0",
     "supervisor": "^0.6.0"

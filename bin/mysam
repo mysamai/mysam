@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+var path = require('path');
+var program = require('commander');
+var root = path.join(__dirname, '..');
+var pkg = require(path.join(root, 'package.json'));
+var electron = require('electron-prebuilt');
+var proc = require('child_process');
+
+program.version(pkg.version)
+  .usage('[options]')
+  .description(pkg.description)
+  .option('-s, --server', 'Run server only')
+  .option('-d --develop', 'Run in development mode')
+  .parse(process.argv);
+
+process.env.NODE_ENV = program.develop ? 'development' : 'production';
+
+if(program.develop) {
+  process.env.DEBUG = process.env.DEBUG ? process.env.DEBUG + ',mysam:*' : 'mysam:*';
+}
+
+if(program.server) {
+  require('../lib/server');
+} else {
+  proc.spawn(electron, [root], {stdio: 'inherit'});
+}

@@ -3,6 +3,7 @@ import debug from 'debug';
 import BrainJSClassifier from 'natural-brain';
 import pos from 'pos';
 import crypto from 'crypto';
+import _ from 'lodash';
 
 import Extractor from '../extractor';
 
@@ -34,7 +35,10 @@ export default {
     create: [addPos, extract]
   },
   create(data, params, callback) {
+    log('Classifying', data);
+
     if(this.retrain) {
+      log('Retraining Neural network');
       this.classifier.retrain();
       this.retrain = false;
     }
@@ -46,7 +50,7 @@ export default {
 
     Q.ninvoke(this.actions, 'get', action)
       .then(action => {
-        return Object.assign(action, { id, input, classifications });
+        return _.extend(action, { id, input, classifications });
       })
       .then(result => {
         log(result);
@@ -68,17 +72,26 @@ export default {
     // We want to classify every word
     BrainJSClassifier.disableStopWords();
 
-    this.classifier = new BrainJSClassifier();
-    this.app = app;
+    this.classifier = new BrainJSClassifier({
+      iterations: 2000
+    });
 
     this.actions = app.service('actions');
     this.actions.on('created', add);
+    //this.actions.on('removed', action => {
+    //
+    //});
 
     Q.ninvoke(this.actions, 'find').then(list => {
         list.forEach(add);
         return list;
       })
-      .then(list => list.length && this.classifier.train())
+      .then(list => {
+        if(list.length) {
+          this.classifier.train();
+          this.retrain = false;
+        }
+      })
       .fail(error => log('ERROR: ', error.stack));
   }
 };

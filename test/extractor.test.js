@@ -1,5 +1,5 @@
 import assert from 'assert';
-import Extractor from '../lib/extractor';
+import Extractor from '../src/extractor';
 
 describe('Sentence word extraction', () => {
   it('.match', function() {
