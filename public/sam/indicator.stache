@@ -1,3 +1,0 @@
-<i can-click="toggle" class="fa
-    {{#if listening}}fa-microphone{{else}}fa-microphone-slash{{/if}}">
-</i>
