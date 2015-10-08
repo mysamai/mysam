@@ -24,7 +24,11 @@ app.on('ready', () => {
   });
 
   mainWindow.loadUrl(`http://localhost:${config.port}`);
-  mainWindow.openDevTools();
+
+  if(process.env.NODE_ENV !== 'production') {
+    mainWindow.openDevTools();
+  }
+
   mainWindow.on('closed', () => {
     mainWindow = null;
   });

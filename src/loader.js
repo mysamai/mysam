@@ -18,33 +18,24 @@ export default function() {
     let pkgPath = require.resolve(path.join(moduleName, 'package.json'));
     let pkg = require(pkgPath);
     let config = pkg.mysam;
-
     if(!config) {
       return Q(null);
     }
 
     log(`Found plugin ${pkg.name}`);
 
-    let pluginLoader = require(moduleName);
+    let dirname = path.dirname(pkgPath);
+    let staticPath = path.join(dirname, config.public || '.');
 
-    if(typeof pluginLoader !== 'function') {
-      throw new Error(`Can not configure plugin ${pkg.name}`);
-    } else {
-    }
-    if(config.public) {
-      let dirname = path.dirname(pkgPath);
-      let staticPath = path.join(dirname, config.public);
+    log(`Setting up ${staticPath} at /${pkg.name}`);
 
-      log(`Setting up ${staticPath} at /${pkg.name}`);
-
-      app.use(`/${pkg.name}`, feathers.static(staticPath));
-    }
+    app.use(`/${pkg.name}`, feathers.static(staticPath));
 
     return Q.ninvoke(plugins, 'create', pkg)
       .then(() => {
         try {
           let pluginLoader = require(moduleName);
-          app.configure(pluginLoader);
+          pluginLoader(app);
         } catch(e) {
           log(`No server configuration module for ${pkg.name}.`);
         }

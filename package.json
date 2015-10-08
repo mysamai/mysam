@@ -1,10 +1,10 @@
 {
   "name": "mysam",
   "version": "0.0.1",
-  "description": "An open, web based \"intelligent\" assistant that can listen to you and learn.",
+  "description": "An open, web-based \"intelligent\" assistant that can listen to you and learn.",
   "main": "lib/electron",
   "bin": {
-    "testee": "./bin/testee"
+    "mysam": "./bin/mysam"
   },
   "scripts": {
     "start": "node lib/server",
