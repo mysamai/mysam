@@ -1,7 +1,6 @@
 import Q from 'q';
 import path from 'path';
 import { exec } from 'child_process';
-import _ from 'lodash';
 import debug from 'debug';
 import feathers from 'feathers';
 
@@ -16,7 +15,7 @@ export default function() {
 
       let pkg = require(pkgPath);
       let config = pkg.mysam;
-      
+
       if(!config) {
         return Q(null);
       }
@@ -49,5 +48,5 @@ export default function() {
     let modules = stdout.toString().trim().split('\n');
 
     return Q.all(modules.map(path => loadPlugin(path)));
-  }).fail(error => console.error(error.stack));;
+  }).fail(error => console.error(error.stack));
 }
