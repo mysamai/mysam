@@ -1,6 +1,6 @@
 {
   "name": "mysam",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "An open, web-based \"intelligent\" assistant that can listen to you and learn.",
   "main": "lib/electron",
   "bin": {
