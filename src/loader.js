@@ -1,6 +1,6 @@
 import Q from 'q';
 import path from 'path';
-import npm from 'npm';
+import { exec } from 'child_process';
 import _ from 'lodash';
 import debug from 'debug';
 import feathers from 'feathers';
@@ -11,54 +11,43 @@ export default function() {
   const app = this;
   const plugins = app.service('plugins');
   const loadPlugin = moduleName => {
-    if(!moduleName){
+    try {
+      let pkgPath = require.resolve(path.join(moduleName, 'package.json'));
+
+      let pkg = require(pkgPath);
+      let config = pkg.mysam;
+      
+      if(!config) {
+        return Q(null);
+      }
+
+      log(`Found plugin ${pkg.name}`);
+
+      let dirname = path.dirname(pkgPath);
+      let staticPath = path.join(dirname, config.public || '.');
+
+      log(`Setting up ${staticPath} at /${pkg.name}`);
+
+      app.use(`/${pkg.name}`, feathers.static(staticPath));
+
+      return Q.ninvoke(plugins, 'create', pkg)
+        .then(() => {
+          try {
+            let pluginLoader = require(moduleName);
+            pluginLoader(app);
+          } catch(e) {
+            log(`No server configuration module for ${pkg.name}.`);
+          }
+        });
+    } catch(e) {
+      debug(`Not loading plugin module ${moduleName}`);
       return Q(null);
     }
-
-    let pkgPath = require.resolve(path.join(moduleName, 'package.json'));
-    let pkg = require(pkgPath);
-    let config = pkg.mysam;
-    if(!config) {
-      return Q(null);
-    }
-
-    log(`Found plugin ${pkg.name}`);
-
-    let dirname = path.dirname(pkgPath);
-    let staticPath = path.join(dirname, config.public || '.');
-
-    log(`Setting up ${staticPath} at /${pkg.name}`);
-
-    app.use(`/${pkg.name}`, feathers.static(staticPath));
-
-    return Q.ninvoke(plugins, 'create', pkg)
-      .then(() => {
-        try {
-          let pluginLoader = require(moduleName);
-          pluginLoader(app);
-        } catch(e) {
-          log(`No server configuration module for ${pkg.name}.`);
-        }
-      });
   };
 
-  Q.ninvoke(npm, 'load', { loaded: false, global: true, depth: 0 })
-    .then(() => {
-      const dfd = Q.defer();
+  Q.nfcall(exec, 'npm ls --depth 0 -g --parseable').then(stdout => {
+    let modules = stdout.toString().trim().split('\n');
 
-      npm.commands.ls([], true, function (error, data) {
-        if(error) {
-          return dfd.reject(error);
-        }
-
-        let configurers = [];
-
-        _.each(data.dependencies, dependency =>
-          dependency && configurers.push(loadPlugin(dependency.path)));
-
-        dfd.resolve(Q.all(configurers));
-      });
-
-      return dfd.promise;
-    }).fail(error => console.error(error.stack));
+    return Q.all(modules.map(path => loadPlugin(path)));
+  }).fail(error => console.error(error.stack));;
 }
