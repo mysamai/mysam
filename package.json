@@ -1,6 +1,6 @@
 {
   "name": "mysam",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "An open, web-based \"intelligent\" assistant that can listen to you and learn.",
   "main": "lib/electron",
   "bin": {
@@ -14,7 +14,11 @@
     "test": "npm run jshint && npm run mocha",
     "jshint": "jshint src/. test/. --config",
     "mocha:watch": "mocha --compilers js:babel/register test/ --watch --recursive --growl --reporter Min",
-    "mocha": "mocha --compilers js:babel/register test/ --recursive"
+    "mocha": "mocha --compilers js:babel/register test/ --recursive",
+    "publish": "git push origin && git push origin --tags",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
   },
   "repository": {
     "type": "git",
@@ -32,6 +36,7 @@
     "feathers-memory": "^0.3.4",
     "feathers-nedb": "^0.1.0",
     "lodash": "^3.9.3",
+    "mysam-frontend": "0.0.1",
     "natural-brain": "^0.2.0",
     "pos": "^0.1.9",
     "q": "^1.4.1"
