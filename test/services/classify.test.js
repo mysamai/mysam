@@ -92,6 +92,16 @@ describe('BrainJS classifier', () => {
     });
   });
 
+  it('runs registered actions', done => {
+    app.action('reply', function(classification) {
+      assert.equal(classification._id, 1);
+      assert.deepEqual(classification.extracted, { subject: ['Gabe'] });
+      done();
+    });
+
+    classify.create({ input: 'Can you please say hi to Gabe' }, () => {});
+  });
+
   it('adding a new action re-trains', done => {
     const newAction = {
       text: 'play some music',

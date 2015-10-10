@@ -45,6 +45,7 @@
     "babel": "^5.8.23",
     "jshint": "^2.8.0",
     "mocha": "^2.3.0",
+    "mysam-weather": "0.0.2",
     "supervisor": "^0.6.0"
   }
 }
