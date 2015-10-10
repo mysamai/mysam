@@ -4,11 +4,13 @@ import assert from 'assert';
 
 import loader from '../src/loader';
 
-describe('Application tests', () => {
+const desc = process.env.CI ? describe.skip : describe;
+
+desc('Application tests', () => {
   const app = feathers()
     .use('/plugins', memory({ idField: 'name' }))
     .use('/actions', memory());
-  
+
   const pluginService = app.service('plugins');
 
   it('loads and initializes the locally installed weather plugin', done => {
