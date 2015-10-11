@@ -1,12 +1,13 @@
 import _ from 'lodash';
 import assert from 'assert';
-import app from '../../src/app';
+import feathers from 'feathers';
+import hooks from 'feathers-hooks';
 
-const classify = app.service('classify');
+import mixin from '../../src/sam';
+import classify from '../../src/services/classify';
 
 describe('BrainJS classifier', () => {
-  const actions = app.service('actions');
-  const { find, get, create } = actions;
+  const app = _.extend(feathers().configure(hooks()), mixin);
   const fixture = [{
     _id: 0,
     text: 'can you hear me',
@@ -36,32 +37,29 @@ describe('BrainJS classifier', () => {
   }];
 
   before(function() {
-    _.extend(actions, {
-      find(callback) {
-        callback(null, fixture);
-      },
+    app.use('/classify', classify())
+      .use('/actions', {
+        find(params, callback) {
+          callback(null, fixture);
+        },
 
-      get(id, callback) {
-        callback(null, _.find(fixture, '_id', parseInt(id, 10)));
-      },
+        get(id, params, callback) {
+          callback(null, _.find(fixture, '_id', parseInt(id, 10)));
+        },
 
-      create(data, callback) {
-        data._id = 23;
-        fixture.push(data);
-        this.emit('created', data);
-        callback(null, data);
-      }
-    });
+        create(data, params, callback) {
+          data._id = 23;
+          fixture.push(data);
+          this.emit('created', data);
+          callback(null, data);
+        }
+      });
 
     app.service('classify').setup(app);
   });
 
-  after(function() {
-    _.extend(actions, { find, get, create });
-  });
-
   it('classifies actions', done => {
-    classify.create({
+    app.service('classify').create({
       input: 'hey you hear me'
     }, {}, (error, data) => {
       assert.equal(data._id, 0);
@@ -72,7 +70,7 @@ describe('BrainJS classifier', () => {
         tags: [ 'UH', 'PRP', 'VB', 'PRP' ]
       });
 
-      classify.create({
+      app.service('classify').create({
         input: 'What\'s the meaning of my life?'
       }, {}, (error, data) => {
         assert.equal(data._id, 2);
@@ -83,7 +81,7 @@ describe('BrainJS classifier', () => {
   });
 
   it('extracts tags', done => {
-    classify.create({
+    app.service('classify').create({
       input: 'Can you please say hi to Gabe'
     }, {}, (error, data) => {
       assert.equal(data._id, 1);
@@ -99,7 +97,7 @@ describe('BrainJS classifier', () => {
       done();
     });
 
-    classify.create({ input: 'Can you please say hi to Gabe' }, () => {});
+    app.service('classify').create({ input: 'Can you please say hi to Gabe' }, () => {});
   });
 
   it('adding a new action re-trains', done => {
@@ -111,8 +109,8 @@ describe('BrainJS classifier', () => {
       }
     };
 
-    actions.create(newAction, (error, action) => {
-      classify.create({
+    app.service('actions').create(newAction, (error, action) => {
+      app.service('classify').create({
         input: 'Can you play music for us?'
       }, {}, (error, data) => {
         assert.equal(data._id, action._id);

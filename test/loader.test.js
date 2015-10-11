@@ -3,12 +3,14 @@ import memory from 'feathers-memory';
 import assert from 'assert';
 
 import loader from '../src/loader';
+import plugins from '../src/services/plugins';
 
+// `npm ls` fails on some CI environments
 const desc = process.env.CI ? describe.skip : describe;
 
 desc('Application tests', () => {
   const app = feathers()
-    .use('/plugins', memory({ idField: 'name' }))
+    .use('/plugins', plugins())
     .use('/actions', memory());
 
   const pluginService = app.service('plugins');
