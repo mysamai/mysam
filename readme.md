@@ -2,11 +2,11 @@
 
 [ ![Codeship Status for daffl/mysam](https://codeship.com/projects/b26a3f10-3c66-0133-d19d-1276d5d0a1e7/status?branch=master)](https://codeship.com/projects/102258)
 
-Sam is an open-source, web-based "intelligent" assistant. It can listen to you, learn new actions and be extended with JavaScript plugins. Sam runs a NodeJS server and as an [Electron](http://electron.atom.io/) desktop application or in a modern browser.
+Sam is an open-source, web-based "intelligent" assistant. It can listen to you, learn new actions and is extensible with JavaScript plugins. Sam runs a [NodeJS](https://nodejs.org/en/) server and in any modern browser or as an [Electron](http://electron.atom.io/) desktop application.
 
 # Installation
 
-Install Sam globally via:
+Install Sam globally with:
 
 > npm install mysam -g
 
@@ -14,26 +14,21 @@ And then run either the desktop application with:
 
 > mysam
 
-Or the server (which is available at [localhost:9090](http://localhost:9090)) via:
+Or the server only (which will be available at [localhost:9090](http://localhost:9090)) via:
 
 > mysam --server
-
-The following command line options are available:
-
-- __-s, --server__ - Start server mode only
-- __-d, --develop__ - Start in development mode
 
 # Getting started
 
 At first startup Sam will load the basic frontend training data (like learning your name, provide help, saying hi or to learn something new) and ask for your name.
 
-To talk to Sam press *CTRL + SPACE* (make sure the browser window is focused).
+To talk to Sam press *CTRL + SPACE* (make sure the window is focused).
 
 All inputs can be submitted with *CTRL + ENTER* (when not in a textarea).
 
 # Plugins
 
-Plugins can be installed via NPM. To ask Sam about the weather run:
+All plugins are available on NPM. To ask Sam about the weather run:
 
 > npm install mysam-weather -g
 
@@ -41,16 +36,25 @@ Then restart the application and ask something like
 
 > What's the weather in Berlin?
 
+# Using the CLI
+
+The following command line options are available:
+
+- __-s, --server__ - Start server mode only
+- __-d, --develop__ - Start in development mode
+
+Development mode (`--develop`) will load the development tools in the Electron application, output detailed log messages to the command line and load the frontend in individual modules. This is helpful when creating your own plugins.
+
 # Creating plugins
 
-To create a new plugin you need the following `package.json`:
+To create a new plugin create a new folder with the following `package.json`:
 
 ```
 {
   "name": "mysam-myplugin",
-  "main": "server.js",
+  "main": "server",
   "mysam": {
-    "client": "frontend.js",
+    "client": "frontend",
     "styles": "styles.css"
   }
 }
@@ -60,16 +64,19 @@ In the same folder a `server.js` like this:
 
 ```js
 module.exports = function(sam) {
-  // `sam` is a Feathers application so
+  // on the server, `sam` is a Feathers application so
   // for example we can create new actions like this:
   sam.service('actions').create({
     text: 'Ping from my plugin',
     tags: [],
     action: {
-      type: 'myplugin'
+      type: 'myplugin',
+      ping: 'Default ping'
     }
+  }, function(error, data) {
+    console.log('Created', data);
   });
-}
+};
 ```
 
 And a `frontend.js` like this:
@@ -84,7 +91,7 @@ module.exports = function(sam) {
     // text that triggered this action
     var heading = document.createElement('h1');
     heading.className = 'myplugin';
-    heading.innerHTML = 'Hello from my plugin';
+    heading.innerHTML = 'Hello from my plugin: ' + classification.action.ping;
 
     element.html(heading);
   });
@@ -93,15 +100,17 @@ module.exports = function(sam) {
   sam.learn({
     description: 'Call myplugin',
     tags: ['name'],
-    form(el, save) {
-      el.html(`<input type="text" class="param" />`)
-        .on('submit', () => save({
-          type: 'myplugin',
-          ping: el.find('.param').val()
-        }));
+    form: function(el, save) {
+      el.html('<input type="text" class="param" />')
+        .on('submit', function(save) {
+          save({
+            type: 'myplugin',
+            ping: el.find('.param').val()
+          });
+        });
     }
   });
-}
+};
 ```
 
 `styles.css` can contain any CSS styles:
@@ -116,7 +125,7 @@ To use the plugin run
 
 > npm link
 
-in the plugin folder and restart the Sam application.
+in the plugin folder and restart the application (for easier debugging you can use the `--develop` flag).
 
 Now saying something like
 
