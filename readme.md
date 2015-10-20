@@ -4,6 +4,10 @@
 
 Sam is an open-source, web-based "intelligent" assistant. It can listen to you, learn new actions and is extensible with JavaScript plugins. Sam runs a [NodeJS](https://nodejs.org/en/) server and in any modern browser or as an [Electron](http://electron.atom.io/) desktop application.
 
+Watch this video to see what Sam can do:
+
+[![MySam video](http://daffl.github.io/mysam/mysam-video.png)](https://www.youtube.com/watch?v=VxFtSsCM_bo)
+
 # Installation
 
 Install Sam globally with:
