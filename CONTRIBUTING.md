@@ -1,12 +1,12 @@
-#Contributing
+# Contributing
 
-##Table of Contents
+## Table of Contents
 
 - [Reporting a bug](#reporting-a-bug)
 - [The 5 magic steps](#the-5-magic-steps)
 - [License](#license)
 
-##Reporting a bug
+## Reporting a bug
 
 1. Look for any related issues [here](https://github.com/daffl/mysam/issues).
 2. If you find an issue that seems related, please comment there instead of creating a new issue. If it is determined to be a unique bug, we will let you know that a new issue can be created.
@@ -24,6 +24,6 @@ If we find an issue that's related, we will reference it and close your issue, s
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :)
 
-##License
+## License
 
 [MySam](https://github.com/daffl/mysam) is distributed under the MIT License, [available in this repository](master/LICENSE.md). All contributions are assumed to be also licensed under the same.
