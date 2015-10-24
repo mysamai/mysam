@@ -1,5 +1,7 @@
 # Say hi SAM
 
+[![Join the chat at https://gitter.im/daffl/mysam](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/daffl/mysam?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [ ![Codeship Status for daffl/mysam](https://codeship.com/projects/b26a3f10-3c66-0133-d19d-1276d5d0a1e7/status?branch=master)](https://codeship.com/projects/102258)
 
 Sam is an open-source, web-based "intelligent" assistant. It can listen to you, learn new actions and is extensible with JavaScript plugins. Sam runs a [NodeJS](https://nodejs.org/en/) server and in any modern browser or as an [Electron](http://electron.atom.io/) desktop application.
