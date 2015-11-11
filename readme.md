@@ -158,6 +158,23 @@ Now saying something like:
 
 Should show the element we created in the action.
 
+## Developing
+
+If you want to develop on this repository initialize it with
+
+> git clone git@github.com:mysamai/mysam.git
+> cd mysam
+> npm install
+
+To run the installation you *have to* compile first with
+
+> npm run compile
+> bin/mysam
+
+To continuously watch for changes run
+
+> npm run compile:watch
+
 ## Contributing
 
 Contributions are very welcome! If you'd like to contribute, these [guidelines](CONTRIBUTING.md) may help you.
