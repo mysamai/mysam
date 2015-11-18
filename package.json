@@ -31,7 +31,7 @@
     "commander": "^2.8.1",
     "debug": "^2.2.0",
     "electron-prebuilt": "^0.33.3",
-    "feathers": "^1.1.0-pre.0",
+    "feathers": "^1.2.0",
     "feathers-hooks": "^0.5.0",
     "feathers-memory": "^0.3.4",
     "feathers-nedb": "^0.1.0",
