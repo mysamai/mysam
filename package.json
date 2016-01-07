@@ -30,7 +30,7 @@
     "body-parser": "^1.13.0",
     "commander": "^2.8.1",
     "debug": "^2.2.0",
-    "electron-prebuilt": "^0.33.3",
+    "electron-prebuilt": "^0.36.2",
     "feathers": "^1.2.0",
     "feathers-hooks": "^0.5.0",
     "feathers-memory": "^0.3.4",
