@@ -6,7 +6,7 @@
 
 Watch this video to see what Sam can do:
 
-[![MySam video](http://daffl.github.io/mysam/mysam-video.png)](https://www.youtube.com/watch?v=VxFtSsCM_bo)
+[![MySam video](http://mysamai.github.io/mysam/mysam-video.png)](https://www.youtube.com/watch?v=VxFtSsCM_bo)
 
 ## Table of Contents
 
