@@ -1,5 +1,11 @@
-import app from './app';
+const path = require('path');
+const createServer = require('mysam-server');
 
-const config = require('../config.json');
+const app = createServer({
+  port: 3030,
+  public: path.join(__dirname, '..', 'public')
+});
 
-app.listen(process.env.PORT || config.port);
+app.listen(app.get('port')).on('listening', 
+  () => console.log(`Listening on ${app.get('port')}`)
+);
