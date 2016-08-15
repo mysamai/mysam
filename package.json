@@ -7,7 +7,7 @@
     "mysam": "./bin/mysam"
   },
   "scripts": {
-    "start": "node lib/server",
+    "start": "npm run compile && node lib/server",
     "electron": "electron .",
     "compile": "babel src --out-dir lib",
     "compile:watch": "babel src --out-dir lib --watch",
@@ -37,6 +37,7 @@
     "feathers-nedb": "^0.1.0",
     "lodash": "^3.9.3",
     "mysam-frontend": "^0.1.0",
+    "mysam-server": "^0.1.0",
     "natural-brain": "^0.2.0",
     "pos": "^0.1.9",
     "q": "^1.4.1"

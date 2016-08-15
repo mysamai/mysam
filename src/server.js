@@ -3,7 +3,8 @@ const createServer = require('mysam-server');
 
 const app = createServer({
   port: 3030,
-  public: path.join(__dirname, '..', 'public')
+  public: path.join(__dirname, '..', '..', 'mysam-frontend'),
+  plugins: path.join(__dirname, '..', '..', 'plugins')
 });
 
 app.listen(app.get('port')).on('listening', 
