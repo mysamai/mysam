@@ -36,7 +36,7 @@
     "feathers-memory": "^0.3.4",
     "feathers-nedb": "^0.1.0",
     "lodash": "^3.9.3",
-    "mysam-frontend": "^0.1.0",
+    "mysam-frontend": "^0.2.0-pre.0",
     "mysam-server": "^0.2.0",
     "pos": "^0.1.9",
     "q": "^1.4.1"
