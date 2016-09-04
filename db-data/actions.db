@@ -6,6 +6,8 @@
 {"type":"weather","text":"what's the weather in vancouver","tags":{"location":[5,5]},"_id":"Fn8nMXQRE23KgaWL"}
 {"type":"hi","text":"hey i'm david","tags":{"to":[3,3]},"_id":"KkvkbMUTTW7AV8Od"}
 {"type":"reply","reply":"You're welcome","text":"thank you","tags":{},"_id":"Wdt7kpTK0Hs2OpLP"}
+{"type":"reply","text":"forget it","reply":"Ok. Sorry, I tried.","_id":"Y0B8SbGE3R0RZzXi"}
 {"type":"reply","text":"so what do you do","reply":"I am an open-source \"intelligent\" assistant that you can train and extend yourself.","_id":"ZFWQqiizgHmVc8I2"}
+{"type":"reply","text":"don't leave me hanging","reply":"I'm trying. One more time?","_id":"d5MGv6C4gNqEUAkD"}
 {"type":"hi","text":"i am david","tags":{"to":[2,2]},"_id":"gDgKIB0RONTx1wNn"}
 {"type":"weather","text":"how hot or cold is it in vancouver","tags":{"location":[7,7]},"_id":"j4YlDEPsO9j56k89"}
