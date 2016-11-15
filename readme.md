@@ -181,4 +181,4 @@ Contributions are very welcome! If you'd like to contribute, these [guidelines](
 
 ## License
 
-[MySam](https://github.com/daffl/mysam) is distributed under the MIT License, [available in this repository](master/LICENSE.md). All contributions are assumed to be also licensed under the same.
+[MySam](https://github.com/mysam/mysam) is distributed under the MIT License, [available in this repository](LICENSE.md). All contributions are assumed to be also licensed under the same.
