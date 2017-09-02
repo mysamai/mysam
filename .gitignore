@@ -1,7 +1,8 @@
+.DS_Store
+
 # Logs
 logs
 *.log
-npm-debug.log*
 
 # Runtime data
 pids
@@ -14,16 +15,18 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
-# node-waf configuration
-.lock-wscript
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directory
-# https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+# Commenting this out is preferred by some people, see
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules
 
-.idea/
-db-data/
-lib/
+# Users Environment Variables
+.lock-wscript
+
+dist/
