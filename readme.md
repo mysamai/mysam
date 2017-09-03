@@ -1,6 +1,10 @@
 # Say *hi*, SAM
 
-[![Codeship Status for daffl/mysam](https://codeship.com/projects/b26a3f10-3c66-0133-d19d-1276d5d0a1e7/status?branch=master)](https://codeship.com/projects/102258)
+[![Build Status](https://travis-ci.org/mysamai/mysam.png?branch=master)](https://travis-ci.org/mysamai/mysam)
+[![Code Climate](https://codeclimate.com/github/mysamai/mysam/badges/gpa.svg)](https://codeclimate.com/github/mysamai/mysam)
+[![Test Coverage](https://codeclimate.com/github/mysamai/mysam/badges/coverage.svg)](https://codeclimate.com/github/mysamai/mysam/coverage)
+[![Dependency Status](https://img.shields.io/david/mysamai/mysam.svg?style=flat-square)](https://david-dm.org/mysamai/mysam)
+[![Download Status](https://img.shields.io/npm/dm/mysam.svg?style=flat-square)](https://www.npmjs.com/package/mysam)
 
 > Sam is an open-source, web-based *"intelligent"* assistant. It can listen to you, learn new actions and is extensible with JavaScript plugins. Sam runs in any modern browser and on [NodeJS](https://nodejs.org/en/).
 
