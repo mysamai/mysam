@@ -2,7 +2,7 @@
   "name": "mysam",
   "description": "An open \"intelligent\" assistant for the browser and NodeJS that can listen to you and learn.",
   "version": "0.1.3",
-  "homepage": "https://github.com/mysamai/mysam",
+  "homepage": "https://mysamai.com",
   "main": "lib/",
   "keywords": [
     "mysam"
@@ -31,7 +31,7 @@
     "release:minor": "npm run add-dist && npm version minor && npm publish",
     "release:major": "npm run add-dist && npm version major && npm publish",
     "changelog": "github_changelog_generator && git add CHANGELOG.md && git commit -am \"Updating changelog\"",
-    "lint": "semistandard lib/**/*.js lib/*.js test/**/*.js test/*.js --fix",
+    "lint": "semistandard --fix",
     "mocha": "mocha --opts mocha.opts",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --opts mocha.opts",
     "test": "npm run browserify && npm run lint && npm run coverage",

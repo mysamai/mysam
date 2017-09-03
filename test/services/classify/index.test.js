@@ -3,7 +3,7 @@ const omit = require('lodash/omit');
 const createApp = require('../../../lib');
 
 describe('classification service', () => {
-  before(function(done) {
+  before(function (done) {
     const app = createApp();
 
     this.app = app;
@@ -62,7 +62,7 @@ describe('classification service', () => {
         text: 'can I watch a movie',
         action: {
           type: 'movie',
-          data: { mode: 'play' },
+          data: { mode: 'play' }
         }
       })
     ]).catch(done);
@@ -70,26 +70,28 @@ describe('classification service', () => {
     this.classify.once('trained', () => done());
   });
 
-  describe('classify weather', function() {
-    it('simple weather', function() {
+  describe('classify weather', function () {
+    it('simple weather', function () {
       const text = 'what\'s the weather in san francisco';
 
       return this.classify.create({ text }).then(classification => {
         assert.ok(classification.confidence > 0.5);
         assert.deepEqual(omit(classification.action, '_id'), {
-          type: 'weather', text,
+          type: 'weather',
+          text,
           tags: { location: [ 5, 6 ] }
         });
         assert.equal(classification.extracted.location, 'san francisco');
       });
     });
 
-    it('weekend weather', function() {
+    it('weekend weather', function () {
       const text = 'how is the weather in berlin on the weekend';
 
       return this.classify.create({ text }).then(classification => {
         assert.deepEqual(omit(classification.action, '_id'), {
-          type: 'weather', text,
+          type: 'weather',
+          text,
           tags: {
             location: [ 5, 5 ],
             time: [ 6, 8 ]
@@ -102,12 +104,13 @@ describe('classification service', () => {
       });
     });
 
-    it('in two days', function() {
+    it('in two days', function () {
       const text = 'what\'s the weather in chicago in two days';
 
       return this.classify.create({ text }).then(classification => {
         assert.deepEqual(omit(classification.action, '_id'), {
-          type: 'weather', text,
+          type: 'weather',
+          text,
           tags: {
             location: [ 5, 5 ],
             time: [ 6, 8 ]
@@ -121,8 +124,8 @@ describe('classification service', () => {
     });
   });
 
-  describe('say hi', function() {
-    it('say hi to david and the cat', function() {
+  describe('say hi', function () {
+    it('say hi to david and the cat', function () {
       const text = 'Can you say hi to david and the cat';
 
       return this.classify.create({ text }).then(classification => {
@@ -136,7 +139,7 @@ describe('classification service', () => {
       });
     });
 
-    it('this is my friend dave the dude', function() {
+    it('this is my friend dave the dude', function () {
       const text = 'this is my friend dave the dude';
 
       return this.classify.create({ text }).then(classification => {
@@ -151,8 +154,8 @@ describe('classification service', () => {
     });
   });
 
-  describe('classify movie', function() {
-    it('watch a movie', function() {
+  describe('classify movie', function () {
+    it('watch a movie', function () {
       const text = 'I want to watch a movie';
 
       return this.classify.create({ text }).then(classification => {

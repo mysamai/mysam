@@ -2,8 +2,8 @@ const assert = require('assert');
 const { EventEmitter } = require('events');
 const Service = require('../../../lib/services/classify/classify.class');
 
-describe('classify service class', function() {
-  it('initializes and classifies actions', function(done) {
+describe('classify service class', function () {
+  it('initializes and classifies actions', function (done) {
     const classify = new Service();
 
     Object.assign(classify, EventEmitter.prototype);
@@ -47,7 +47,7 @@ describe('classify service class', function() {
     });
   });
 
- it('can remove actions', function(done) {
+  it('can remove actions', function (done) {
     const classify = new Service();
     const musicAction = {
       action: { _id: 'music' },
