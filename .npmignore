@@ -1,5 +1,10 @@
-!lib/
-src/
-test/
+.editorconfig
+.jshintrc
+.travis.yml
+.istanbul.yml
+.babelrc
 .idea/
-db-data/
+.vscode/
+test/
+coverage/
+.github/
