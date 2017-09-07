@@ -1,5 +1,8 @@
 const assert = require('assert');
+const ls = require('node-localstorage');
+
 const createApp = require('../lib');
+const localStorage = new ls.LocalStorage('.');
 
 describe('mysam-core app', () => {
   it('creates default services', () => {
@@ -16,5 +19,16 @@ describe('mysam-core app', () => {
         assert.equal(page.data.length, 1);
       });
     });
+  });
+
+  it('browser version', () => {
+    global.window = { localStorage };
+
+    const browser = require('../lib/browser');
+    const app = browser();
+
+    assert.ok(app);
+
+    delete global.window;
   });
 });
