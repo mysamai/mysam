@@ -1,5 +1,7 @@
 # Say *hi*, SAM
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mysamai/mysam.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/mysamai/mysam.png?branch=master)](https://travis-ci.org/mysamai/mysam)
 [![Code Climate](https://codeclimate.com/github/mysamai/mysam/badges/gpa.svg)](https://codeclimate.com/github/mysamai/mysam)
 [![Test Coverage](https://codeclimate.com/github/mysamai/mysam/badges/coverage.svg)](https://codeclimate.com/github/mysamai/mysam/coverage)
