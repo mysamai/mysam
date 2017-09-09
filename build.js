@@ -1,14 +1,21 @@
+const path = require('path');
+const fs = require('fs');
 const browserify = require('browserify');
+const isProduction = process.env.NODE_ENV === 'production';
+const filename = path.join('dist', isProduction ? 'mysam.min.js' : 'mysam.js');
 
-browserify({
+let pipeline = browserify({
   entries: [ 'lib/browser.js' ],
   standalone: 'mysam',
-  fullPaths: true
+  debug: !isProduction
 })
 .transform('babelify', {
   global: true,
-  only: /^(?:.*\/node_modules\/feathers.*\/|(?!.*\/node_modules\/)).*$/,
-  presets: ['es2015']
-})
-.bundle()
-.pipe(process.stdout);
+  only: /^(?:.*\/node_modules\/feathers.*\/|(?!.*\/node_modules\/)).*$/
+});
+
+if(isProduction) {
+  pipeline = pipeline.transform('uglifyify', { global: true });
+}
+
+pipeline.bundle().pipe(fs.createWriteStream(filename));
