@@ -14,7 +14,7 @@ let pipeline = browserify({
   only: /^(?:.*\/node_modules\/feathers.*\/|(?!.*\/node_modules\/)).*$/
 });
 
-if(isProduction) {
+if (isProduction) {
   pipeline = pipeline.transform('uglifyify', { global: true });
 }
 
