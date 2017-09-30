@@ -24,7 +24,7 @@ describe('mysam-core app', () => {
   it('browser version', () => {
     global.window = { localStorage };
 
-    const browser = require('../lib/browser');
+    const browser = require('../browser');
     const app = browser();
 
     assert.ok(app);
