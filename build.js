@@ -5,7 +5,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const filename = path.join('dist', isProduction ? 'mysam.min.js' : 'mysam.js');
 
 let pipeline = browserify({
-  entries: [ 'lib/browser.js' ],
+  entries: [ 'browser.js' ],
   standalone: 'mysam',
   debug: !isProduction
 })
