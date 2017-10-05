@@ -23,7 +23,7 @@ cd mysam-test
 
 Create the following `index.html`
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
