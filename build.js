@@ -11,7 +11,7 @@ let pipeline = browserify({
 })
 .transform('babelify', {
   global: true,
-  only: /^(?:.*\/node_modules\/feathers.*\/|(?!.*\/node_modules\/)).*$/
+  only: /^(?:.*\/node_modules\/@feathersjs.*\/|(?!.*\/node_modules\/)).*$/
 });
 
 if (isProduction) {
