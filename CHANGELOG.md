@@ -1,5 +1,20 @@
 # Change Log
 
+## [v0.2.0-pre.2](https://github.com/mysamai/mysam/tree/v0.2.0-pre.2) (2018-01-14)
+[Full Changelog](https://github.com/mysamai/mysam/compare/v0.2.0-pre.1...v0.2.0-pre.2)
+
+**Merged pull requests:**
+
+- Migrate to Webpack build [\#39](https://github.com/mysamai/mysam/pull/39) ([daffl](https://github.com/daffl))
+- Update to Feathers final release and new module location [\#38](https://github.com/mysamai/mysam/pull/38) ([daffl](https://github.com/daffl))
+- Update browserify to the latest version 🚀 [\#37](https://github.com/mysamai/mysam/pull/37) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update semistandard to the latest version 🚀 [\#36](https://github.com/mysamai/mysam/pull/36) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update natural-brain to the latest version 🚀 [\#35](https://github.com/mysamai/mysam/pull/35) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update feathers-localstorage to the latest version 🚀 [\#34](https://github.com/mysamai/mysam/pull/34) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update feathers-memory to the latest version 🚀 [\#33](https://github.com/mysamai/mysam/pull/33) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update babelify to the latest version 🚀 [\#32](https://github.com/mysamai/mysam/pull/32) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Update mocha to the latest version 🚀 [\#31](https://github.com/mysamai/mysam/pull/31) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
 ## [v0.2.0-pre.1](https://github.com/mysamai/mysam/tree/v0.2.0-pre.1) (2017-09-30)
 [Full Changelog](https://github.com/mysamai/mysam/compare/v0.1.3...v0.2.0-pre.1)
 
