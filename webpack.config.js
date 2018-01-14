@@ -17,6 +17,9 @@ const commons = {
       test: /\.jsx?$/,
       exclude: /node_modules\/(?!(@feathersjs|mysam|feathers))/,
       loader: 'babel-loader'
+    }, {
+      test: path.resolve(__dirname, 'node_modules/webworker-threads/index.js'),
+      use: 'null-loader'
     }]
   },
   node: {
