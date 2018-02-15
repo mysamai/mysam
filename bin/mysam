@@ -2,26 +2,23 @@
 
 var path = require('path');
 var program = require('commander');
-var root = path.join(__dirname, '..');
-var pkg = require(path.join(root, 'package.json'));
-var electron = require('electron-prebuilt');
-var proc = require('child_process');
+var pkg = require(path.join(__dirname, '..', 'package.json'));
+var express = require('express');
 
 program.version(pkg.version)
   .usage('[options]')
   .description(pkg.description)
-  .option('-s, --server', 'Run server only')
-  .option('-d --develop', 'Run in development mode')
+  .option('-p, --port', 'The port to run on (default: 5050)')
+  .option('-p --path', 'The folder to serve for plugin files (defaults to current folder)')
   .parse(process.argv);
 
-process.env.NODE_ENV = program.develop ? 'development' : 'production';
+var folder = program.path || process.cwd();
+var port = program.port || 5050;
+var app = express();
 
-if(program.develop) {
-  process.env.DEBUG = process.env.DEBUG ? process.env.DEBUG + ',mysam:*' : 'mysam:*';
-}
+app.use(express.static(folder));
+app.use(express.static(path.join(require.resolve('mysam-ui'), '..', '..')));
 
-if(program.server) {
-  require('../lib/server');
-} else {
-  proc.spawn(electron, [root], {stdio: 'inherit'});
-}
+app.listen(port).once('listening', function () {
+  console.log('MySam running at http://localhost:' + port);
+});
