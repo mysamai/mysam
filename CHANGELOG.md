@@ -1,5 +1,13 @@
 # Change Log
 
+## [v0.2.0-pre.3](https://github.com/mysamai/mysam/tree/v0.2.0-pre.3) (2018-02-15)
+[Full Changelog](https://github.com/mysamai/mysam/compare/v0.2.0-pre.2...v0.2.0-pre.3)
+
+**Merged pull requests:**
+
+- Always use localStorage conditionally [\#41](https://github.com/mysamai/mysam/pull/41) ([daffl](https://github.com/daffl))
+- Update mocha to the latest version 🚀 [\#40](https://github.com/mysamai/mysam/pull/40) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
 ## [v0.2.0-pre.2](https://github.com/mysamai/mysam/tree/v0.2.0-pre.2) (2018-01-14)
 [Full Changelog](https://github.com/mysamai/mysam/compare/v0.2.0-pre.1...v0.2.0-pre.2)
 
