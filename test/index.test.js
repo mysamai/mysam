@@ -21,13 +21,13 @@ describe('mysam-core app', () => {
     });
   });
 
-  it('browser version', () => {
+  it('uses localStorage if it is on the window', () => {
     global.window = { localStorage };
 
-    const browser = require('../browser');
-    const app = browser();
+    const app = createApp();
 
     assert.ok(app);
+    assert.equal(app.service('actions')._storage, localStorage);
 
     delete global.window;
   });
