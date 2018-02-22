@@ -1,5 +1,13 @@
 # Change Log
 
+## [v0.2.0-pre.4](https://github.com/mysamai/mysam/tree/v0.2.0-pre.4) (2018-02-22)
+[Full Changelog](https://github.com/mysamai/mysam/compare/v0.2.0-pre.3...v0.2.0-pre.4)
+
+**Merged pull requests:**
+
+- Move to using mysam-core make consolidation repo [\#43](https://github.com/mysamai/mysam/pull/43) ([daffl](https://github.com/daffl))
+- Add a binary that starts a simple webserver [\#42](https://github.com/mysamai/mysam/pull/42) ([daffl](https://github.com/daffl))
+
 ## [v0.2.0-pre.3](https://github.com/mysamai/mysam/tree/v0.2.0-pre.3) (2018-02-15)
 [Full Changelog](https://github.com/mysamai/mysam/compare/v0.2.0-pre.2...v0.2.0-pre.3)
 
