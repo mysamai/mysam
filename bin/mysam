@@ -1,24 +1,19 @@
 #!/usr/bin/env node
 
-var path = require('path');
-var program = require('commander');
-var pkg = require(path.join(__dirname, '..', 'package.json'));
-var express = require('express');
+const pathing = require('path');
+const program = require('commander');
+const pkg = require(pathing.join(__dirname, '..', 'package.json'));
+const server = require('../src/server');
 
 program.version(pkg.version)
   .usage('[options]')
   .description(pkg.description)
-  .option('-p, --port', 'The port to run on (default: 5050)')
-  .option('-p --path', 'The folder to serve for plugin files (defaults to current folder)')
+  .option('-p, --port <port>', 'The port to run on (default: 5050)', parseInt)
+  .option('-p --path <folder>', 'The folder to serve (default: current folder)')
   .parse(process.argv);
 
-var folder = program.path || process.cwd();
-var port = program.port || 5050;
-var app = express();
+const { port = 5050, path = process.cwd() } = program;
 
-app.use(express.static(folder));
-app.use(express.static(path.join(require.resolve('mysam-ui'), '..', '..')));
+const instance = server({ port, path });
 
-app.listen(port).once('listening', function () {
-  console.log('MySam running at http://localhost:' + port);
-});
+instance.once('listening', () => console.log(`MySam running at http://localhost:${port}`));
