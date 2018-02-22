@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.2.0](https://github.com/mysamai/mysam/tree/v0.2.0) (2018-02-22)
+[Full Changelog](https://github.com/mysamai/mysam/compare/v0.2.0-pre.4...v0.2.0)
+
+**Merged pull requests:**
+
+- Prepare for release [\#44](https://github.com/mysamai/mysam/pull/44) ([daffl](https://github.com/daffl))
+
 ## [v0.2.0-pre.4](https://github.com/mysamai/mysam/tree/v0.2.0-pre.4) (2018-02-22)
 [Full Changelog](https://github.com/mysamai/mysam/compare/v0.2.0-pre.3...v0.2.0-pre.4)
 
