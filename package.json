@@ -39,7 +39,7 @@
     "test": "npm run lint && npm run mocha",
     "clean": "shx rm -rf dist/ && shx mkdir -p dist",
     "copy:assets": "shx cp -R node_modules/mysam-ui/assets dist/assets",
-    "copy:styles": "shx cp -R node_modules/mysam-ui/dist/styles.css dist/.",
+    "copy:styles": "shx mkdir dist/styles && shx cp -R node_modules/mysam-ui/dist/styles.css dist/styles/",
     "copy:public": "shx cp -R public/. dist/.",
     "copy": "npm run copy:assets && npm run copy:styles && npm run copy:public",
     "add-dist": "npm run build && git add dist/ --force && git commit -am \"Updating dist\"",
