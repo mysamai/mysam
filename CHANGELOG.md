@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.2.1](https://github.com/mysamai/mysam/tree/v0.2.1) (2018-02-23)
+[Full Changelog](https://github.com/mysamai/mysam/compare/v0.2.0...v0.2.1)
+
+**Merged pull requests:**
+
+- Move styles so that they load fonts from CDN [\#45](https://github.com/mysamai/mysam/pull/45) ([daffl](https://github.com/daffl))
+
 ## [v0.2.0](https://github.com/mysamai/mysam/tree/v0.2.0) (2018-02-22)
 [Full Changelog](https://github.com/mysamai/mysam/compare/v0.2.0-pre.4...v0.2.0)
 
