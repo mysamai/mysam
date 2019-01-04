@@ -15,7 +15,7 @@ describe('server tests', () => {
 
     res = await axios.get('http://localhost:7777/app.js');
 
-    assert.equal(res.data, `console.log('Overwritten');\n`);
+    assert.strictEqual(res.data, `console.log('Overwritten');\n`);
 
     return new Promise(resolve => instance.close(() => resolve()));
   });
