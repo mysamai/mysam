@@ -96,7 +96,7 @@
     "shx": "^0.3.2",
     "uglify-js": "^3.4.9",
     "uglifyjs-webpack-plugin": "^2.1.1",
-    "webpack": "^4.28.4",
+    "webpack": "^4.39.0",
     "webpack-cli": "^3.2.0",
     "webpack-merge": "^4.2.1"
   }
